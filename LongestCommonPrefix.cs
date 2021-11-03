@@ -1,7 +1,6 @@
 using System;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Running;
 using Xunit;
 
 namespace leetcode
@@ -73,12 +72,6 @@ namespace leetcode
             var result = LongestCommonPrefix(strings);
 
             Assert.Equal("a", result);
-        }
-
-        [Fact]
-        public void RunBenchmark()
-        {
-            BenchmarkSwitcher.FromAssembly(typeof(LongestCommonPrefixProblem).Assembly).Run(Array.Empty<string>());
         }
 
         private string[] array = new string[] { "aa", "ab" };
