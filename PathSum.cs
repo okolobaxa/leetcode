@@ -57,7 +57,7 @@ namespace leetcode
 
             Assert.Equal(false, result);
         }
-        
+
         [Fact]
         public void PathSumTest4()
         {
@@ -68,7 +68,7 @@ namespace leetcode
 
             Assert.Equal(true, result);
         }
-        
+
         [Fact]
         public void PathSumTest5()
         {
@@ -109,7 +109,6 @@ namespace leetcode
         public bool Travers(TreeNode root, int currentSum, int targetSum)
         {
             if (root == null) return false;
-            
             if (root.left == null && root.right == null)
             {
                 return currentSum + root.val == targetSum;
@@ -118,19 +117,19 @@ namespace leetcode
             return Travers(root.left, currentSum + root.val, targetSum)
                         || Travers(root.right, currentSum + root.val, targetSum);
         }
-    }
 
-    public class TreeNode
-    {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+        public class TreeNode
         {
-            this.val = val;
-            this.left = left;
-            this.right = right;
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+
+            public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+            {
+                this.val = val;
+                this.left = left;
+                this.right = right;
+            }
         }
     }
 }
