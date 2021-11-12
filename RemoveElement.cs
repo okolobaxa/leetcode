@@ -1,0 +1,56 @@
+using Xunit;
+
+namespace leetcode
+{
+    /// https://leetcode.com/problems/remove-element/
+    public class RemoveElementProblem
+    {
+        [Fact]
+        public void RemoveElementTest1()
+        {
+            var nums = new int[] { 3, 2, 2, 3 };
+
+            var result = RemoveElement(nums, 3);
+
+            Assert.Equal(new int[] { 2, 2, 3, 3 }, nums);
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+        public void RemoveElementTest2()
+        {
+            var nums = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+
+            var result = RemoveElement(nums, 2);
+
+            Assert.Equal(new int[] { 0, 1, 3, 0, 4, 2, 2, 2 }, nums);
+            Assert.Equal(5, result);
+        }
+
+        public int RemoveElement(int[] nums, int val)
+        {
+            for (var i = 1; i < nums.Length; i++)
+            {
+                for (var j = 0; j < nums.Length - i; j++)
+                {
+                    if (nums[j] == val)
+                    {
+                        var temp = nums[j];
+                        nums[j] = nums[j + 1];
+                        nums[j + 1] = temp;
+                    }
+                }
+            }
+
+            int count = 0, k = 0;
+            while (k < nums.Length)
+            {
+                if (nums[k] != val) count++;
+                else  break;
+                k++;
+            }
+
+            return count;
+        }
+    }
+}
